@@ -147,25 +147,71 @@ class _ChoixPageState extends State<ChoixPage> {
                   ),
                 ),
               ),
-              GestureDetector(
-                  onTap: () async {
-                    try {
-                      await _auth.signOut().then((value) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HommePage(),
+              Column(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blueGrey,
+                        shape: const StadiumBorder(),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 30)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const Text(
+                          "Se Deconnecter",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
-                        );
-                      });
-                    } on FirebaseAuthException catch (e) {}
-                  },
-                  child: Text("Deconnecter",
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.red,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ))),
+                        ),
+                      ],
+                    ),
+                    onPressed: () async {
+                      try {
+                        await _auth.signOut().then((value) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HommePage(),
+                            ),
+                          );
+                        });
+                      } on FirebaseAuthException catch (e) {}
+                    },
+                  ),
+                ],
+              ),
+              // GestureDetector(
+              //   onTap: () async {
+              //     try {
+              //       await _auth.signOut().then((value) {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //             builder: (context) => HommePage(),
+              //           ),
+              //         );
+              //       });
+              //     } on FirebaseAuthException catch (e) {}
+              //   },
+              //   child: Container(
+              //       color: Colors.yellow.shade600,
+
+              //       padding: const EdgeInsets.all(8),
+              //       // Change button text when light changes state.
+              //       child: Text("Deconnecter",
+              //           style: GoogleFonts.ubuntu(
+              //             color: Colors.red,
+              //             fontSize: 20,
+              //             fontWeight: FontWeight.bold,
+              //           ))),
+              // ),
             ],
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
