@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:driver_app/LoginPage1.dart';
 import 'package:flutter/material.dart';
+import 'GpsPage.dart';
 import 'ProfilePage.dart';
 import 'SocialPage.dart';
 import 'animation.dart';
@@ -46,7 +47,7 @@ class _ChoixPageState extends State<ChoixPage> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SocialPage()));
+                      MaterialPageRoute(builder: (context) => ProfilePage()));
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -71,8 +72,8 @@ class _ChoixPageState extends State<ChoixPage> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HommePage()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -88,7 +89,7 @@ class _ChoixPageState extends State<ChoixPage> {
                         color: Colors.white,
                       ),
                       Text(
-                        "Search",
+                        "Maps",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       )
                     ],
@@ -147,46 +148,46 @@ class _ChoixPageState extends State<ChoixPage> {
                   ),
                 ),
               ),
-              Column(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.blueGrey,
-                        shape: const StadiumBorder(),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 30)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              // Column(
+              //   children: [
+              //     ElevatedButton(
+              //       style: ElevatedButton.styleFrom(
+              //           primary: Colors.blueGrey,
+              //           shape: const StadiumBorder(),
+              //           padding:
+              //               EdgeInsets.symmetric(vertical: 10, horizontal: 30)),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
 
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const Text(
-                          "Se Deconnecter",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    onPressed: () async {
-                      try {
-                        await _auth.signOut().then((value) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HommePage(),
-                            ),
-                          );
-                        });
-                      } on FirebaseAuthException catch (e) {}
-                    },
-                  ),
-                ],
-              ),
+              //         // ignore: prefer_const_literals_to_create_immutables
+              //         children: [
+              //           const SizedBox(
+              //             height: 30,
+              //           ),
+              //           const Text(
+              //             "Se Deconnecter",
+              //             style: TextStyle(
+              //               fontSize: 15,
+              //               fontWeight: FontWeight.bold,
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //       onPressed: () async {
+              //         try {
+              //           await _auth.signOut().then((value) {
+              //             Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                 builder: (context) => HommePage(),
+              //               ),
+              //             );
+              //           });
+              //         } on FirebaseAuthException catch (e) {}
+              //       },
+              //     ),
+              //   ],
+              // ),
               // GestureDetector(
               //   onTap: () async {
               //     try {

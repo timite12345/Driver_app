@@ -1,6 +1,9 @@
 import 'package:driver_app/LoginPage1.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'EditerProfile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final _auth = FirebaseAuth.instance;
+
   Future picImage() async {
     await ImagePicker().pickImage(source: ImageSource.camera);
   }
@@ -38,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HommePage(),
+                  builder: (context) => EditerProfilesPage(),
                 ),
               );
             },
@@ -249,6 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Mon Compte",
                     style: TextStyle(
                       fontSize: 18,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -287,6 +293,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Notification",
                     style: TextStyle(
                       fontSize: 18,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -325,6 +332,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Parametre",
                     style: TextStyle(
                       fontSize: 18,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -363,6 +371,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Aide",
                     style: TextStyle(
                       fontSize: 18,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -389,11 +398,17 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               foregroundColor: Colors.grey.shade300,
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HommePage()),
-              );
+            onPressed: () async {
+              try {
+                await _auth.signOut().then((value) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HommePage(),
+                    ),
+                  );
+                });
+              } on FirebaseAuthException catch (e) {}
             },
             child: Row(
               children: const [
@@ -406,6 +421,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Se Deconnecter",
                     style: TextStyle(
                       fontSize: 18,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
