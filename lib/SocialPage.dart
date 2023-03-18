@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ChoixPage.dart';
 import 'ConnexionPage.dart';
 import 'LoginPage1.dart';
+import 'Mission.dart';
 import 'SocialPage.dart';
 import 'animation.dart';
 import 'package:driver_app/Variable.dart';
@@ -138,7 +139,7 @@ class SocialPage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HommePage(),
+                                    builder: (context) => Mission(),
                                   ),
                                 );
                               },
