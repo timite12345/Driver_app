@@ -16,12 +16,12 @@ class _MissionState extends State<Mission> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           iconSize: 30.0,
           color: Colors.white,
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'Mission',
           style: TextStyle(
             fontSize: 28.0,
@@ -40,11 +40,11 @@ class _MissionState extends State<Mission> {
       ),
       body: Column(
         children: [
-          CategorySelector(), //Cette classe permet de scroller la barre de navigation d'en haut
+          const CategorySelector(), //Cette classe permet de scroller la barre de navigation d'en haut
           Expanded(
             child: Container(
               //height: 500,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -55,7 +55,7 @@ class _MissionState extends State<Mission> {
                   Container(
                     height: 300,
                     color: Colors.blue,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
