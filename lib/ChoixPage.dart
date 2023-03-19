@@ -30,7 +30,7 @@ class _ChoixPageState extends State<ChoixPage> {
         backgroundColor: Colors.white.withOpacity(0),
         centerTitle: true,
         title: Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           child: Text("Que voulez-vous faire ?",
               style: GoogleFonts.ubuntu(
                 color: Colors.blueGrey,
